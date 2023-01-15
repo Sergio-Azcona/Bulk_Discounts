@@ -1,4 +1,5 @@
 require 'csv'
+# $rails import 
 
 task :import, [:customers] => :environment do
   CSV.foreach('db/data/customers.csv', headers: true) do |row|

@@ -8,13 +8,19 @@ RSpec.describe Item, type: :model do
     it { should validate_presence_of :merchant_id }
   end
   describe "relationships" do
-    it { should have_many(:invoices).through(:invoice_items) }
     it { should belong_to :merchant }
+    it { should have_many(:bulk_discounts).through(:merchant) }
+    it { should have_many(:invoice_items) }
+    it { should have_many(:invoices).through(:invoice_items) }
+    it { should have_many(:transactions).through(:invoices) }
+    it { should have_many(:customers).through(:invoices) }
   end
+
   describe "instance methods" do
     it "best day" do
       @merchant1 = Merchant.create!(name: 'Hair Care')
       @merchant2 = Merchant.create!(name: 'Jewelry')
+
 
       @item_1 = Item.create!(name: "Shampoo", description: "This washes your hair", unit_price: 10, merchant_id: @merchant1.id, status: 1)
       @item_2 = Item.create!(name: "Conditioner", description: "This makes your hair shiny", unit_price: 8, merchant_id: @merchant1.id)
@@ -57,7 +63,7 @@ RSpec.describe Item, type: :model do
       @transaction5 = Transaction.create!(credit_card_number: 102938, result: 1, invoice_id: @invoice_5.id)
       @transaction6 = Transaction.create!(credit_card_number: 879799, result: 0, invoice_id: @invoice_6.id)
       @transaction7 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_7.id)
-
+      
       expect(@item_1.best_day).to eq(@invoice_2.created_at.to_date)
     end
   end
