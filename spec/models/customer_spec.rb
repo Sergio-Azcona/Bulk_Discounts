@@ -7,8 +7,11 @@ RSpec.describe Customer, type: :model do
   end
   describe "relationships" do
     it { should have_many :invoices }
-    it { should have_many(:merchants).through(:invoices) }
     it { should have_many(:transactions).through(:invoices) }
+    it { should have_many(:invoice_items).through(:invoices) }
+    it { should have_many(:merchants).through(:invoices) }
+    it { should have_many(:items).through(:merchants) }
+    it { should have_many(:bulk_discounts).through(:merchants) }
   end
 
   describe 'instance methods' do

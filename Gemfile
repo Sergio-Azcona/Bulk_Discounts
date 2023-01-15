@@ -40,9 +40,11 @@ group :development, :test do
   gem 'launchy'
   gem 'orderly'
   gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem "table_print" # $require 'table_print' #AR prints table in terminal
 end
 
 group :development do
