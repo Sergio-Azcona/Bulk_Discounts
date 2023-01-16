@@ -1,0 +1,14 @@
+
+<%= form_with url: path, method: method, local: true do |f| %>
+  <h3><%= f.label :name, "Name" %>
+  <%= f.text_field :name, value: name %></h3>
+
+  <h3><%= f.label :quantity, "Quantity Threshold" %>
+  <%= f.text_field :quantity, value: quantity %></h3>
+
+  <h3><%= f.label :percentage, "Percentage" %>
+  <%= f.text_field :percentage, value: percentage %></h3>
+
+  <h3><%= f.submit button_text %>
+  <% end %>
+  

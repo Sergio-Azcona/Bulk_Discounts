@@ -1,0 +1,25 @@
+<div class="nav-container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-text"><h2 style="color:Tomato;"><center><%= @merchant.name %></center></h2></p>
+  </nav>
+</div>
+
+<body>
+  <div class="row">
+    <p class='mr-auto col-sm-5'> Create A Discount </p>
+  </div>
+
+  <%= render partial: 'form', locals: {
+                              path: ("/merchant/#{@merchant.id}/bulk_discounts"),
+                              method: :post,
+                              name:  @new_discount.name,
+                              quantity:  @new_discount.quantity,
+                              percentage:  @new_discount.percentage,
+                              button_text: "Create Discount"  } %>
+
+
+
+
+
+
+</body>

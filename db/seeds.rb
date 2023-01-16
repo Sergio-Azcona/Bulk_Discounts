@@ -10,9 +10,9 @@
 @bd_6 = @merchant1.bulk_discounts.create!(name: 'Spirit of 1966', quantity: 66, percentage: 19.66)
 @bd_21 = @merchant2.bulk_discounts.create!(name: 'One-Ten', quantity: 100, percentage: 10.00)
 @bd_22 = @merchant2.bulk_discounts.create!(name: '30-3s All Today!', quantity: 30, percentage: 33.33)
-@bd_24 = @merchant2.bulk_discounts.create!(name: '40-Today!', quantity: 40, percentage: 40.40)
-@bd_25 = @merchant2.bulk_discounts.create!(name: 'Fifty for Five', quantity: 50, percentage: 5.00)
-@bd_26 = @merchant3.bulk_discounts.create!(name: '90/90 Customer Club!', quantity: 90, percentage: 90.00)
+@bd_23 = @merchant2.bulk_discounts.create!(name: '40-Today!', quantity: 40, percentage: 40.40)
+@bd_24 = @merchant2.bulk_discounts.create!(name: 'Fifty for Five', quantity: 50, percentage: 5.00)
+@bd_31 = @merchant3.bulk_discounts.create!(name: '90/90 Customer Club!', quantity: 90, percentage: 90.00)
 
 @item_1 = @merchant1.items.create!(name: "radio", description: "Listen to live broadcasts anywhere", unit_price: 60)
 @item_2 = @merchant1.items.create!(name: "batteries", description: "Power up today", unit_price: 11)
