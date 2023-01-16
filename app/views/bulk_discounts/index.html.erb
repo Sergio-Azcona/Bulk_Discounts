@@ -10,7 +10,7 @@
   </div>
 </body>
  
- <ul>
+<ul>
       <% @merchant.bulk_discounts.each do |discount| %>
         <div id="Discount-<%= discount.id %>">
           <h4><%= link_to "Discount: #{discount.name}", merchant_bulk_discount_path(@merchant, discount) %></h4>
