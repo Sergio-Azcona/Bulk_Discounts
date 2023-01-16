@@ -60,8 +60,6 @@ RSpec.describe 'bulk discount new' do
       expect(page).to have_content('Pizza Pies For Everyone')
 
       # expect(page).to have_content('Update Successful') #does print - why is it not showing?
-
     end
-
   end
 end
