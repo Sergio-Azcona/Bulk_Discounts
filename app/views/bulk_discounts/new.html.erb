@@ -12,9 +12,9 @@
   <%= render partial: 'form', locals: {
                               path: ("/merchant/#{@merchant.id}/bulk_discounts"),
                               method: :post,
-                              name: '',
-                              quantity: '',
-                              percentage: '',
+                              name:  @new_discount.name,
+                              quantity:  @new_discount.quantity,
+                              percentage:  @new_discount.percentage,
                               button_text: "Create Discount"  } %>
 
 

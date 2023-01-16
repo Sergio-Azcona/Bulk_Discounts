@@ -11,19 +11,18 @@ class BulkDiscountsController < ApplicationController
 
   def new
     @merchant = Merchant.find(params[:merchant_id]) 
-    @discount = @merchant.bulk_discounts.new
-    # require 'pry';binding.pry
+    @new_discount = @merchant.bulk_discounts.new
   end
 
   def create
     @merchant = Merchant.find(params[:merchant_id]) 
-    @discount = @merchant.bulk_discounts.create(discount_params)
+    @new_discount = @merchant.bulk_discounts.create(discount_params)
 
-    if @discount.save
+    if @new_discount.save
       flash.notice = "Update Successful"
       redirect_to merchant_bulk_discounts_path(@merchant)
     else
-      flash.notice = "NOT Successful. Please Try Again"
+      flash.notice = "Unsuccessful - Please Try Again"
       render :new
     end
   end
