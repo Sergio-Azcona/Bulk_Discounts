@@ -9,4 +9,5 @@ class BulkDiscount < ApplicationRecord
     has_many :customers, through: :invoices
 
 
+
 end
