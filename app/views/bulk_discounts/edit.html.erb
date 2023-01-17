@@ -1,0 +1,21 @@
+<div class="nav-container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-text"><h2 style="color:Tomato;"><center><%= @merchant.name %></center></h2></p>
+  </nav>
+</div>
+
+<body>
+  <div class="row">
+    <p class='mr-auto col-sm-5'> Edit Discount </p>
+  </div>
+
+  <%= render partial: 'form', locals: {
+                              path: "/merchant/#{@merchant.id}/bulk_discounts/#{@editing_discount.id}",
+                              method: :patch,
+                              button_text: "Update Discount", 
+                              name:  @editing_discount.name,
+                              quantity:  @editing_discount.quantity,
+                              percentage:  @editing_discount.percentage
+                              } %>
+
+</body>
