@@ -60,6 +60,7 @@
 @ii_19 = InvoiceItem.create!(invoice_id: @inv_8.id, item_id: @item_2.id, quantity: 29, unit_price: @item_2.unit_price, status: 1)
 @ii_20 = InvoiceItem.create!(invoice_id: @inv_3.id, item_id: @item_1.id, quantity: 101, unit_price: @item_1.unit_price, status: 0)
 @ii_21 = InvoiceItem.create!(invoice_id: @inv_4.id, item_id: @item_5.id, quantity: 99, unit_price: @item_5.unit_price, status: 2)
+@ii_22 = InvoiceItem.create!(invoice_id: @inv_4.id, item_id: @item_5.id, quantity: 1, unit_price: @item_5.unit_price, status: 2)
 
 @transaction_1 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @inv_1.id)
 @transaction_2 = Transaction.create!(credit_card_number: 230948, result: 1, invoice_id: @inv_2.id)

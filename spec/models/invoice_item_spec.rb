@@ -48,7 +48,7 @@ RSpec.describe InvoiceItem, type: :model do
     end
   end
 
-  it 'US 7: returns the names of the dicounts applied to an item'do
+  it 'US 7: returns only the dicounts applied to an item'do
     @m1 = Merchant.create!(name: 'Merchant 1')
     @m2 = Merchant.create!(name: 'General Store') 
     @customer_1 = Customer.create!(first_name: 'Alpha', last_name: 'Smith')
@@ -76,7 +76,6 @@ RSpec.describe InvoiceItem, type: :model do
 
     expect(@ii_3.discount_applied).to eq(@bd_3)     
     expect(@ii_4.discount_applied).to eq(@bd_22)     
-
 
     #returns nil when no discounts apply
     expect(@ii_1.discount_applied).to eq(nil)     
