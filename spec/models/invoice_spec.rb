@@ -74,7 +74,7 @@ RSpec.describe Invoice, type: :model do
         expect(@inv_1.calculate_discounted_revenue).to eq(622.5)
         expect(@inv_2.calculate_discounted_revenue).to eq(750)
         expect(@inv_3.calculate_discounted_revenue).to eq(666.7)
-        require 'pry';binding.pry
+        # require 'pry';binding.pry
       end
 
       # it 'US 7: returns the names of the dicounts applied to an item'do
