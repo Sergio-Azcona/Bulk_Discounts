@@ -53,51 +53,60 @@ RSpec.describe 'invoices show' do
     @transaction8 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_8.id)
   end
 
-  it "shows the invoice information" do
-    visit merchant_invoice_path(@merchant1, @invoice_1)
+  describe 'inherited tests' do
+    it "shows the invoice information" do
+      visit merchant_invoice_path(@merchant1, @invoice_1)
 
-    expect(page).to have_content(@invoice_1.id)
-    expect(page).to have_content(@invoice_1.status)
-    expect(page).to have_content(@invoice_1.created_at.strftime("%A, %B %-d, %Y"))
+      expect(page).to have_content(@invoice_1.id)
+      expect(page).to have_content(@invoice_1.status)
+      expect(page).to have_content(@invoice_1.created_at.strftime("%A, %B %-d, %Y"))
+    end
+
+    it "shows the customer information" do
+      visit merchant_invoice_path(@merchant1, @invoice_1)
+
+      expect(page).to have_content(@customer_1.first_name)
+      expect(page).to have_content(@customer_1.last_name)
+      expect(page).to_not have_content(@customer_2.last_name)
+    end
+
+    it "shows the item information" do
+      visit merchant_invoice_path(@merchant1, @invoice_1)
+
+      expect(page).to have_content(@item_1.name)
+      expect(page).to have_content(@ii_1.quantity)
+      expect(page).to have_content(@ii_1.unit_price)
+      expect(page).to_not have_content(@ii_4.unit_price)
+
+    end
+
+    it "shows the total revenue for this invoice" do
+      visit merchant_invoice_path(@merchant1, @invoice_1)
+
+      expect(page).to have_content(@invoice_1.total_revenue)
+    end
+
+    it "shows a select field to update the invoice status" do
+      visit merchant_invoice_path(@merchant1, @invoice_1)
+
+      within("#the-status-#{@ii_1.id}") do
+        page.select("cancelled")
+        click_button "Update Invoice"
+
+        expect(page).to have_content("cancelled")
+      end
+
+      within("#current-invoice-status") do
+        expect(page).to_not have_content("in progress")
+      end
+    end
   end
 
-  it "shows the customer information" do
-    visit merchant_invoice_path(@merchant1, @invoice_1)
+  describe 'US-6:  Total Revenue and Discounted Revenue' do
+    it 'displays the total discounted revenue from this invoice' do
+      visit merchant_invoice_path(@merchant1, @invoice_1)
 
-    expect(page).to have_content(@customer_1.first_name)
-    expect(page).to have_content(@customer_1.last_name)
-    expect(page).to_not have_content(@customer_2.last_name)
+      expect(page).to have_content(@invoice_1.calculate_discounted_revenue)
+    end
   end
-
-  it "shows the item information" do
-    visit merchant_invoice_path(@merchant1, @invoice_1)
-
-    expect(page).to have_content(@item_1.name)
-    expect(page).to have_content(@ii_1.quantity)
-    expect(page).to have_content(@ii_1.unit_price)
-    expect(page).to_not have_content(@ii_4.unit_price)
-
-  end
-
-  it "shows the total revenue for this invoice" do
-    visit merchant_invoice_path(@merchant1, @invoice_1)
-
-    expect(page).to have_content(@invoice_1.total_revenue)
-  end
-
-  it "shows a select field to update the invoice status" do
-    visit merchant_invoice_path(@merchant1, @invoice_1)
-
-    within("#the-status-#{@ii_1.id}") do
-      page.select("cancelled")
-      click_button "Update Invoice"
-
-      expect(page).to have_content("cancelled")
-     end
-
-     within("#current-invoice-status") do
-       expect(page).to_not have_content("in progress")
-     end
-  end
-
 end
