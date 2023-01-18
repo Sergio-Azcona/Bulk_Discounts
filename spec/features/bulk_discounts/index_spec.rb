@@ -83,7 +83,7 @@ RSpec.describe 'bulk discount index' do
     describe 'displays attributes and values (i.e. percentage discount and quantity thresholds) with each discount' do
       it "displays a functioning link to each bulk discount's show page to each bulk discount" do
         expect(page).to have_content(@merchant2.name)
-        
+        # save_and_open_page
         expect(page).to have_content(@bd_21.name)
         expect(page).to have_content(@bd_22.quantity)
         expect(page).to have_content(@bd_24.percentage)
@@ -135,4 +135,10 @@ RSpec.describe 'bulk discount index' do
     end
   end
 
+  describe 'holidays displayed' do
+    it 'displays holidays visible' do
+      expect(page).to have_content(@holidays)
+      # expect(page).to have_content(@holidays.date)
+    end
+  end
 end

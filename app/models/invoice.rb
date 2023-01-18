@@ -31,13 +31,12 @@ class Invoice < ApplicationRecord
         # .group("invoice_items.id, bulk_discounts.id")
         # .order(discount_amount: :desc)
       
-  # def discount_applied(item)
-  #   self.bulk_discounts.joins(invoice_items)
-  #   .select("bulk_discounts.name", "max((invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discount_amount")
-  #   .group("invoice_items.id", "bulk_discounts.id") 
-  #   .where("invoice_items.quantity >= bulk_discounts.quantity AND invoice_items.invoice_id = ?", self.id)
-
-  # end
+        # def discount_applied(item)
+        #   self.bulk_discounts.joins(invoice_items)
+        #   .select("bulk_discounts.name", "max((invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discount_amount")
+        #   .group("invoice_items.id", "bulk_discounts.id") 
+        #   .where("invoice_items.quantity >= bulk_discounts.quantity AND invoice_items.invoice_id = ?", self.id)
+        # end
 
   def calculate_discounted_revenue
     self.total_revenue - self.discounted_total

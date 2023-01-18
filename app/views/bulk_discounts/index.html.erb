@@ -23,6 +23,14 @@
       <% end %>
 </ul>
 
+<<div style="position:fixed; padding: 1em; top: 0; right: 0;">
+  <ul>
+    <h3>Upcoming Holidays</h3>
+    <% @holidays.each do |h|%>
+      <ul>Holiday: <%= h.name %> Date: <%= h.date%></ul>
+    <% end %>
+  </ul>
+</div>
 
 <div style="position:fixed; padding: 1em; bottom: 0; right: 0;">
   <ul><%= link_to "Create Discount", new_merchant_bulk_discount_path(@merchant) %></ul>
