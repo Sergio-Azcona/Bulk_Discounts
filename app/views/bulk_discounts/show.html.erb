@@ -6,6 +6,18 @@
 
 <body>
   <div class="row">
-    <p class='mr-auto col-sm-5'><%=  @discount.name%></p>
+    <p class='mr-auto col-sm-5'>Discount: <%=  @discount.name%></p>
   </div>
 </body>
+
+<ul>
+  <li>Quantity Threshold: <%=  @discount.quantity %></li>
+  <li> Percentage: <%= @discount.percentage %></li>
+</ul>
+
+<div style="position:fixed; padding: 1em; bottom: 0; right: 0;">
+  <ul><i><%= link_to "Edit #{@discount.name}", edit_merchant_bulk_discount_path(@merchant, @discount) %></i></ul>
+  <ul><i><%= link_to "Create Discount", new_merchant_bulk_discount_path(@merchant) %></i></ul>
+  <ul><i><%= link_to 'Discounts Index', merchant_bulk_discounts_path %></i></ul>
+  <ul><i><%= link_to "DELETE #{@discount.name}",  "/merchant/#{@merchant.id}/bulk_discounts/#{@discount.id}", method: :delete %></i></ul>
+</div>
