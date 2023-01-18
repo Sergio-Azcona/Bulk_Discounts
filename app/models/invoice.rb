@@ -20,26 +20,27 @@ class Invoice < ApplicationRecord
         .select("max((invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discount_amount")
         .group("invoice_items.id") 
         .where("invoice_items.quantity >= bulk_discounts.quantity AND invoice_items.invoice_id = ?", self.id)
-        # .sum(:discount_amount)
-    # require 'pry';binding.pry
-    # InvoiceItem.joins(:bulk_discounts)
-    # .select("bulk_discounts.name AS discount_name, invoice_items.*, sum(invoice_items.quantity * invoice_items.unit_price) AS GROSS_REV, 
-    # max( (invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discounted_amount,  
-    # SUM( (invoice_items.quantity * invoice_items.unit_price) - ((invoice_items.quantity * invoice_items.unit_price) * (bulk_discounts.percentage/100))) AS total_discounted_revenue")
-    # .group("invoice_items.id, bulk_discounts.id")
-    .sum(&:discount_amount)
-    # .order(discount_amount: :desc)
-   
-      #returns the discount name
-    # BulkDiscount.joins(:invoice_items)
-    #             .select("max( (invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS dis_amount, invoice_items.*")
-    #             .where("invoice_items.quantity >= bulk_discounts.quantity AND invoice_items.invoice_id = 5")
-    #             .group("invoice_items.id")
-
+        .sum(&:discount_amount)
   end
+        # .sum(:discount_amount)
+        # require 'pry';binding.pry
+        # InvoiceItem.joins(:bulk_discounts)
+        # .select("bulk_discounts.name AS discount_name, invoice_items.*, sum(invoice_items.quantity * invoice_items.unit_price) AS GROSS_REV, 
+        # max( (invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discounted_amount,  
+        # SUM( (invoice_items.quantity * invoice_items.unit_price) - ((invoice_items.quantity * invoice_items.unit_price) * (bulk_discounts.percentage/100))) AS total_discounted_revenue")
+        # .group("invoice_items.id, bulk_discounts.id")
+        # .order(discount_amount: :desc)
+      
+  # def discount_applied(item)
+  #   self.bulk_discounts.joins(invoice_items)
+  #   .select("bulk_discounts.name", "max((invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discount_amount")
+  #   .group("invoice_items.id", "bulk_discounts.id") 
+  #   .where("invoice_items.quantity >= bulk_discounts.quantity AND invoice_items.invoice_id = ?", self.id)
+
+  # end
 
   def calculate_discounted_revenue
-
+    self.total_revenue - self.discounted_total
   end 
 
 end
