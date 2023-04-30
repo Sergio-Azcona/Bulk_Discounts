@@ -8,6 +8,7 @@
 @bd_4 = @merchant1.bulk_discounts.create!(name: '50s BLOWOUT!', quantity: 50, percentage: 50.50)
 @bd_5 = @merchant1.bulk_discounts.create!(name: 'Five-4Five', quantity: 50, percentage: 45.45)
 @bd_6 = @merchant1.bulk_discounts.create!(name: 'Spirit of 1966', quantity: 66, percentage: 19.66)
+@bd_7 = @merchant1.bulk_discounts.create!(name: '40-Today!', quantity: 40, percentage: 40.40)
 @bd_21 = @merchant2.bulk_discounts.create!(name: 'One-Ten', quantity: 100, percentage: 10.00)
 @bd_22 = @merchant2.bulk_discounts.create!(name: '30-3s All Today!', quantity: 30, percentage: 33.33)
 @bd_23 = @merchant2.bulk_discounts.create!(name: '40-Today!', quantity: 40, percentage: 40.40)
@@ -61,6 +62,7 @@
 @ii_20 = InvoiceItem.create!(invoice_id: @inv_3.id, item_id: @item_1.id, quantity: 101, unit_price: @item_1.unit_price, status: 0)
 @ii_21 = InvoiceItem.create!(invoice_id: @inv_4.id, item_id: @item_5.id, quantity: 99, unit_price: @item_5.unit_price, status: 2)
 @ii_22 = InvoiceItem.create!(invoice_id: @inv_4.id, item_id: @item_5.id, quantity: 1, unit_price: @item_5.unit_price, status: 2)
+@ii_22 = InvoiceItem.create!(invoice_id: @inv_1.id, item_id: @item_3.id, quantity: 1, unit_price: @item_5.unit_price, status: 2)
 
 @transaction_1 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @inv_1.id)
 @transaction_2 = Transaction.create!(credit_card_number: 230948, result: 1, invoice_id: @inv_2.id)
