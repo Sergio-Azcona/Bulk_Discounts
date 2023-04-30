@@ -1,6 +1,8 @@
 @merchant1 = Merchant.create!(name: 'RadioShack')
 @merchant2 = Merchant.create!(name: 'General Store')
 @merchant3 = Merchant.create!(name: 'Office Space')
+@merchant4 = Merchant.create!(name: "Roger's Shop")
+@merchant5 = Merchant.create!(name: "Billy's Goat Store")
 
 @bd_1 = @merchant1.bulk_discounts.create!(name: 'One-Ten', quantity: 100, percentage: 10.00)
 @bd_2 = @merchant1.bulk_discounts.create!(name: 'Half Off Second 50!', quantity: 100, percentage: 50.00)
@@ -14,6 +16,13 @@
 @bd_23 = @merchant2.bulk_discounts.create!(name: '40-Today!', quantity: 40, percentage: 40.40)
 @bd_24 = @merchant2.bulk_discounts.create!(name: 'Fifty for Five', quantity: 50, percentage: 5.00)
 @bd_31 = @merchant3.bulk_discounts.create!(name: '90/90 Customer Club!', quantity: 90, percentage: 90.00)
+@bd_51 = @merchant4.bulk_discounts.create!(name: 'One-Ten', quantity: 100, percentage: 10.00)
+@bd_52 = @merchant4.bulk_discounts.create!(name: 'Half Off Second 50!', quantity: 100, percentage: 50.00)
+@bd_53 = @merchant4.bulk_discounts.create!(name: '90 for 30s All Day!', quantity: 90, percentage: 30.30)
+@bd_54 = @merchant4.bulk_discounts.create!(name: '50s BLOWOUT!', quantity: 50, percentage: 50.50)
+@bd_55 = @merchant4.bulk_discounts.create!(name: 'Five-4Five', quantity: 50, percentage: 45.45)
+@bd_66 = @merchant5.bulk_discounts.create!(name: 'Spirit of 16', quantity: 16, percentage: 16.00)
+@bd_67 = @merchant5.bulk_discounts.create!(name: '1-4-Today!', quantity: 4, percentage: 14.14)
 
 @item_1 = @merchant1.items.create!(name: "radio", description: "Listen to live broadcasts anywhere", unit_price: 60)
 @item_2 = @merchant1.items.create!(name: "batteries", description: "Power up today", unit_price: 11)
@@ -23,6 +32,10 @@
 @item_6 = @merchant2.items.create!(name: "Shampoo", description: "This washes your hair", unit_price: 10)
 @item_7 = @merchant3.items.create!(name: "batteries", description: "Power up today", unit_price: 50)
 @item_8 = @merchant3.items.create!(name: "Light Bulb", description: "Bright", unit_price: 40)
+@item_9 = @merchant4.items.create!(name: "cups", description: "for drinks!", unit_price: 1)
+@item_10 = @merchant4.items.create!(name: "Shampoo", description: "This washes your hair", unit_price: 10)
+@item_11 = @merchant5.items.create!(name: "batteries", description: "Power up today", unit_price: 50)
+@item_12 = @merchant5.items.create!(name: "Light Bulb", description: "Bright", unit_price: 40)
 
 @customer_1 = Customer.create!(first_name: 'Alpha', last_name: 'Smith')
 @customer_2 = Customer.create!(first_name: 'Cecilia', last_name: 'Cruz')
@@ -39,6 +52,9 @@
 @inv_6 = Invoice.create!(customer_id: @customer_4.id, status: 1,  created_at: 57.days.ago)
 @inv_7 = Invoice.create!(customer_id: @customer_1.id, status: 1)
 @inv_8 = Invoice.create!(customer_id: @customer_3.id, status: 1)
+@inv_9 = Invoice.create!(customer_id: @customer_3.id, status: 1,  created_at: Time.now - 3.years)
+@inv_10 = Invoice.create!(customer_id: @customer_6.id, status: 2,  created_at: 72.hours.ago)
+@inv_11 = Invoice.create!(customer_id: @customer_5.id, status: 1)
 
 @ii_1 = InvoiceItem.create!(invoice_id: @inv_1.id, item_id: @item_3.id, quantity: 350, unit_price: @item_3.unit_price, status: 1)
 @ii_2 = InvoiceItem.create!(invoice_id: @inv_4.id, item_id: @item_2.id, quantity: 80, unit_price: @item_2.unit_price, status: 0)
@@ -64,6 +80,11 @@
 @ii_22 = InvoiceItem.create!(invoice_id: @inv_4.id, item_id: @item_5.id, quantity: 1, unit_price: @item_5.unit_price, status: 2)
 @ii_22 = InvoiceItem.create!(invoice_id: @inv_1.id, item_id: @item_3.id, quantity: 1, unit_price: @item_5.unit_price, status: 2)
 
+@ii_20 = InvoiceItem.create!(invoice_id: @inv_9.id, item_id: @item_11.id, quantity: 101, unit_price: @item_11.unit_price, status: 0)
+@ii_21 = InvoiceItem.create!(invoice_id: @inv_10.id, item_id: @item_12.id, quantity: 99, unit_price: @item_12.unit_price, status: 2)
+@ii_22 = InvoiceItem.create!(invoice_id: @inv_11.id, item_id: @item_10.id, quantity: 1, unit_price: @item_10.unit_price, status: 2)
+@ii_22 = InvoiceItem.create!(invoice_id: @inv_10.id, item_id: @item_9.id, quantity: 1, unit_price: @item_9.unit_price, status: 2)
+
 @transaction_1 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @inv_1.id)
 @transaction_2 = Transaction.create!(credit_card_number: 230948, result: 1, invoice_id: @inv_2.id)
 @transaction_3 = Transaction.create!(credit_card_number: 234092, result: 0, invoice_id: @inv_3.id,  created_at: Time.now - 3.years)
@@ -74,3 +95,5 @@
 @transaction_8 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @inv_6.id,  created_at: 44.days.ago)
 @transaction_9 = Transaction.create!(credit_card_number: 230429, result: 1, invoice_id: @inv_7.id)
 @transaction_10 = Transaction.create!(credit_card_number: 102938, result: 1, invoice_id: @inv_8.id)
+@transaction_11 = Transaction.create!(credit_card_number: 231429, result: 1, invoice_id: @inv_20.id)
+@transaction_12 = Transaction.create!(credit_card_number: 104938, result: 1, invoice_id: @inv_22.id)

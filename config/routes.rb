@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-   get '/', to: 'welcome#index'
+   get '/', to: 'welcome#index', as: "welcome"
   
-  resources :merchant, only: [:show] do 
+  resources :merchant, only: [] do 
     resources :dashboard, only: [:index]
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
