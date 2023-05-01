@@ -17,7 +17,7 @@ class Invoice < ApplicationRecord
 
   def discounted_total
     self.invoice_items.joins(:bulk_discounts)
-        .select("max((invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)  ) AS discount_amount")
+        .select("max((invoice_items.quantity * invoice_items.unit_price) * ( bulk_discounts.percentage/100)) AS discount_amount")
         .group("invoice_items.id") 
         .where("invoice_items.quantity >= bulk_discounts.quantity AND invoice_items.invoice_id = ?", self.id)
         .sum(&:discount_amount)

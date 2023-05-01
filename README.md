@@ -1,5 +1,9 @@
 # Little Esty Shop - Bulk Discount
-"Bulk Discounts" is a brownfield app which adds functionality to "Little Esty Shop." The latter was a group project that requires Turing students to build a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices. Bulk Discounts allowed merchants to create bulk sale discounts which the app would apply when necessary and adjust sale invoices appropriately. 
+"Bulk Discounts" is a brownfield app which adds functionality to "Little Esty Shop." The latter was a group project that requires Turing students to build a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices.
+<br> 
+Bulk Discounts allowed merchants to create bulk sale discounts which the app would apply when necessary and adjust sale invoices appropriately. 
+<br>
+Additionally, the app calculated the bulk discounts applied to an invocie and provided relevant informaiton for the merchant.
 
 ## Functionality 
 <details>
@@ -26,13 +30,25 @@
 </details>
 
 <details>
-  <summary>SQL</summary>
+  <summary>Calculations - SQL </summary>
   Only 1 discount <i>could</i> apply to each line item on the invoice: <u>the discount most favorable to the customer</u>. A item could qualify for countless discounts but only the most customer-friendly discount mattered. Or, no discount could apply!
   <details>
-    <summary>SQL Code Example</summary>
-
+    <ul>
+      <summary>Raw SQL Code</summary>
+      <li>The SQL query had to retrieve all the applicable discounts and return only the 1 discount (most favorable for the customer).<br> 
+      Here is what the SQL query looks like
+      <img src="app/assets/images/sql/sql_bd_sql_query.png">
+      NOTES:
+      <li>the invoice_id '5' was used while tinkering with the query; this would become dynamic once the method was complete</li>
+      <li><i style="color:dodgerblue;">invoice_items</i> and <i style="color:dodgerblue;">bulk_discounts</i> are in blue text to illistrate which two tables I needed to ultimatly join</li>
+      </li>
+      <hr>
+      <summary>SQL Query to ActiveRecord Method</summary>
+      <li>I leveraged ActiveRecord Associations to draw out relationships that allowed me to join <i style="color:dodgerblue;">invoice_items</i> and <i style="color:dodgerblue;">bulk_discounts</i>,  and create simple database queries.
+      <img src="app/assets/images/sql/sql_relationships.png"></li>
+      <li>The Association allowed me to link the tables <i style="color:dodgerblue;">invoice_items</i> directly to <i style="color:dodgerblue;">bulk_discount</i>.<br> 
+      Within the method I also created the alias <i>discount_amount</i> which is tallied in the sum method on line 23. This was needed to capture the total amount from all the discounts applied on a singel invoice.
+      <img src="app/assets/images/sql/sql_discounted_total.png"></li>
+    </ul>
   </details>
 </details>
-
-<!-- 
-## 'US-6 & US-7:  Total Revenue and Discounted Revenue and Link to Discount' -->
