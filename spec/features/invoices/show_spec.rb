@@ -145,6 +145,8 @@ RSpec.describe 'invoices show' do
       expect(page).to have_content(@inv_3.calculate_discounted_revenue)
     end
   
+    #in code tr = table row; td = table data; can throw an identifer and use it in a within block
+
     it 'Provides a link to the discount applied to the item on the invoice' do
       visit merchant_invoice_path(@m1, @inv_1)
             

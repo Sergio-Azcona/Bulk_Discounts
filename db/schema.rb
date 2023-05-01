@@ -84,6 +84,12 @@ ActiveRecord::Schema.define(version: 2023_01_14_150925) do
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id"
   end
 
+  create_table "users_table", id: :integer, default: nil, force: :cascade do |t|
+    t.text "user_name"
+    t.text "user_email"
+    t.index ["user_email"], name: "users_table_user_email_key", unique: true
+  end
+
   add_foreign_key "bulk_discounts", "merchants"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"

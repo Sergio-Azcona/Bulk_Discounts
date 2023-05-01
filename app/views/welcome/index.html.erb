@@ -1,0 +1,20 @@
+<ul style="list-style: none">
+  <h2>View A Merchant's Dashboard</h2>
+    <% @merchants.each do |merchant| %>
+      <li><%= link_to merchant.name, merchant_dashboard_index_path(merchant) %></li>
+    <% end %>
+</ul>
+
+<ul style="list-style: none">
+  <h2>View A Merchant's Bulk Discounts</h2>
+    <% @merchants.each do |merchant| %>
+      <li><%= link_to merchant.name, merchant_bulk_discounts_path(merchant) %></li>
+    <% end %>
+</ul>
+
+<ul style="list-style: none">
+  <h2>View A Merchant's Admin Page (No Authorization Required)</h2>
+    <% @merchants.each do |merchant| %>
+      <li><%= link_to merchant.name, admin_merchant_path(merchant) %></li>
+    <% end %>
+</ul>
