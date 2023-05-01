@@ -4,10 +4,11 @@
 "Bulk Discounts" is a brownfield app which adds functionality to "Little Esty Shop." The latter was a group project that requires Turing students to build a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices.
 <hr> 
 Bulk Discounts allowed merchants to create bulk sale discounts which the app would apply when necessary and adjust sale invoices appropriately. 
+Additionally, the app calculated the bulk discounts applied to an invoice and provided relevant informaiton for the merchant.
 <br>
-Additionally, the app calculated the bulk discounts applied to an invocie and provided relevant informaiton for the merchant.
+The tasks required for this project were intended on solidifying CRUD, ActiveRecord, and SQL principles. 
 
-<br>
+<hr>
 <details close>
   <summary>Content</summary>
   <ul list-style-position="inside">
