@@ -11,17 +11,17 @@ Additionally, the app calculated the bulk discounts applied to an invocie and pr
 <details close>
   <summary>Content</summary>
   <ul list-style-position="inside">
-    <li><a href="#specs-and-launch-instructions">Specs and Launch Instructions</a></li>
-    <li><a href="#crud">CRUD</a>
+    <li>Specs and Launch Instructions</a></li>
+    <li>CRUD</a>
       <ul>
-        <li><a href="#crud-code-example">CRUD Code Example</a></li>
-        <li><a href="#ux-with-crud">UX with CRUD</a></li>
+        <li>CRUD Code Example</a></li>
+        <li>UX with CRUD</a></li>
       </ul>
     </li>
-    <li><a href="#calculations-sql">Calculations - SQL</a>
+    <li>Calculations - SQL</a>
       <ul>
-        <li><a href="#raw-sql-code">Raw SQL Code</li>
-        <li><a href="#sql-query-to-activerecord-method">SQL Query to ActiveRecord Method</a></li>
+        <li>Raw SQL Code</li>
+        <li>SQL Query to ActiveRecord Method</a></li>
       </ul>
     </li>
   </ul>
